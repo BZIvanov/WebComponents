@@ -5,7 +5,7 @@ import { AV_API_KEY } from '../../global/global';
 @Component({
   tag: 'uc-stock-price',
   styleUrl: './stock-price.css',
-  shadow: true
+  shadow: true,
 })
 export class StockPrice {
   stockInput: HTMLInputElement;
@@ -90,13 +90,13 @@ export class StockPrice {
     fetch(
       `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockSymbol}&apikey=${AV_API_KEY}`
     )
-      .then(res => {
+      .then((res) => {
         if (res.status !== 200) {
           throw new Error('Invalid!');
         }
         return res.json();
       })
-      .then(parsedRes => {
+      .then((parsedRes) => {
         if (!parsedRes['Global Quote']['05. price']) {
           throw new Error('Invalid symbol!');
         }
@@ -104,7 +104,7 @@ export class StockPrice {
         this.fetchedPrice = +parsedRes['Global Quote']['05. price'];
         this.loading = false;
       })
-      .catch(err => {
+      .catch((err) => {
         this.error = err.message;
         this.fetchedPrice = null;
         this.loading = false;
@@ -129,16 +129,16 @@ export class StockPrice {
     return [
       <form onSubmit={this.onFetchStockPrice.bind(this)}>
         <input
-          id="stock-symbol"
-          ref={el => (this.stockInput = el)}
+          id='stock-symbol'
+          ref={(el) => (this.stockInput = el)}
           value={this.stockUserInput}
           onInput={this.onUserInput.bind(this)}
         />
-        <button type="submit" disabled={!this.stockInputValid || this.loading}>
+        <button type='submit' disabled={!this.stockInputValid || this.loading}>
           Fetch
         </button>
       </form>,
-      <div>{dataContent}</div>
+      <div>{dataContent}</div>,
     ];
   }
 }

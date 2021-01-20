@@ -3,10 +3,10 @@ class Tooltip extends HTMLElement {
     super();
     this._tooltipContainer;
     this._tooltipText = 'Some dummy tooltip text.';
-    this.attachShadow({ mode: 'open' });      // here we make our custom components using the shadow DOM
+    this.attachShadow({ mode: 'open' }); // here we make our custom components using the shadow DOM
     // we have access to shadowRoot function because we allowed shadowDOM and these styles will be only applied for our custom component
     // because our custom component is now in the shadow dom we dont get the content from the normal dom so we have to use slot element which is similar to props.children from React
-    // if in the normal DOM we dont have content between the tags for our costum component, whatever is in the slot will be used as default content 
+    // if in the normal DOM we dont have content between the tags for our costum component, whatever is in the slot will be used as default content
     this.shadowRoot.innerHTML = `
         <style>
             div {

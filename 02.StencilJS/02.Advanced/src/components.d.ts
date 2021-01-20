@@ -4,35 +4,30 @@
  * It contains typing information for all components that exist in this project.
  */
 
-
 import '@stencil/core';
 
-
-
-
 export namespace Components {
-
   interface UcSpinner {}
   interface UcSpinnerAttributes extends StencilHTMLAttributes {}
 
   interface UcStockFinder {}
   interface UcStockFinderAttributes extends StencilHTMLAttributes {
-    'onUcSymbolSelected'?: (event: CustomEvent<string>) => void;
+    onUcSymbolSelected?: (event: CustomEvent<string>) => void;
   }
 
   interface UcStockPrice {
-    'stockSymbol': string;
+    stockSymbol: string;
   }
   interface UcStockPriceAttributes extends StencilHTMLAttributes {
-    'stockSymbol'?: string;
+    stockSymbol?: string;
   }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'UcSpinner': Components.UcSpinner;
-    'UcStockFinder': Components.UcStockFinder;
-    'UcStockPrice': Components.UcStockPrice;
+    UcSpinner: Components.UcSpinner;
+    UcStockFinder: Components.UcStockFinder;
+    UcStockPrice: Components.UcStockPrice;
   }
 
   interface StencilIntrinsicElements {
@@ -41,29 +36,34 @@ declare global {
     'uc-stock-price': Components.UcStockPriceAttributes;
   }
 
-
-  interface HTMLUcSpinnerElement extends Components.UcSpinner, HTMLStencilElement {}
+  interface HTMLUcSpinnerElement
+    extends Components.UcSpinner,
+      HTMLStencilElement {}
   var HTMLUcSpinnerElement: {
     prototype: HTMLUcSpinnerElement;
     new (): HTMLUcSpinnerElement;
   };
 
-  interface HTMLUcStockFinderElement extends Components.UcStockFinder, HTMLStencilElement {}
+  interface HTMLUcStockFinderElement
+    extends Components.UcStockFinder,
+      HTMLStencilElement {}
   var HTMLUcStockFinderElement: {
     prototype: HTMLUcStockFinderElement;
     new (): HTMLUcStockFinderElement;
   };
 
-  interface HTMLUcStockPriceElement extends Components.UcStockPrice, HTMLStencilElement {}
+  interface HTMLUcStockPriceElement
+    extends Components.UcStockPrice,
+      HTMLStencilElement {}
   var HTMLUcStockPriceElement: {
     prototype: HTMLUcStockPriceElement;
     new (): HTMLUcStockPriceElement;
   };
 
   interface HTMLElementTagNameMap {
-    'uc-spinner': HTMLUcSpinnerElement
-    'uc-stock-finder': HTMLUcStockFinderElement
-    'uc-stock-price': HTMLUcStockPriceElement
+    'uc-spinner': HTMLUcSpinnerElement;
+    'uc-stock-finder': HTMLUcStockFinderElement;
+    'uc-stock-price': HTMLUcStockPriceElement;
   }
 
   interface ElementTagNameMap {
@@ -72,7 +72,6 @@ declare global {
     'uc-stock-price': HTMLUcStockPriceElement;
   }
 
-
   export namespace JSX {
     export interface Element {}
     export interface IntrinsicElements extends StencilIntrinsicElements {
@@ -80,5 +79,4 @@ declare global {
     }
   }
   export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
