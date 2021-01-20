@@ -1,5 +1,4 @@
 import { Component, State, Event, EventEmitter } from '@stencil/core';
-
 import { AV_API_KEY } from '../../global/global';
 
 @Component({

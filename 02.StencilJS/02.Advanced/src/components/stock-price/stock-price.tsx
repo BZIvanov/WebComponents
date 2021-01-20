@@ -1,5 +1,4 @@
 import { Component, State, Element, Prop, Watch, Listen } from '@stencil/core';
-
 import { AV_API_KEY } from '../../global/global';
 
 @Component({

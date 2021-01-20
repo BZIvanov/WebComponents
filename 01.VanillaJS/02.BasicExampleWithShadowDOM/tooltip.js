@@ -8,16 +8,16 @@ class Tooltip extends HTMLElement {
     // because our custom component is now in the shadow dom we dont get the content from the normal dom so we have to use slot element which is similar to props.children from React
     // if in the normal DOM we dont have content between the tags for our costum component, whatever is in the slot will be used as default content
     this.shadowRoot.innerHTML = `
-        <style>
-            div {
-                background-color: black;
-                color: white;
-                position: absolute;
-                z-index: 10;
-            }
-        </style>
-        <slot>Some default</slot>
-        <span> (?)</span>
+      <style>
+        div {
+          background-color: black;
+          color: white;
+          position: absolute;
+          z-index: 10;
+        }
+      </style>
+      <slot>Some default</slot>
+      <span> (?)</span>
     `;
   }
 

@@ -8,40 +8,40 @@ class Tooltip extends HTMLElement {
     // :host() by using host as function and providing parameters we can do conditional styling, depending for example if some class is provided
     // :host-context(css selector) allows us to apply styling conditionally depending if our custom element is a child of parent matching the css selector
     this.shadowRoot.innerHTML = `
-        <style>
-            div {
-                background-color: black;
-                color: white;
-                position: absolute;
-                z-index: 10;
-            }
+      <style>
+        div {
+          background-color: black;
+          color: white;
+          position: absolute;
+          z-index: 10;
+        }
 
-            :host(.imp) {
-              background: var(--color-primary, #ccc);
-            }
+        :host(.imp) {
+          background: var(--color-primary, #ccc);
+        }
 
-            :host-context(p) {
-              font-weight: bold;
-            }
+        :host-context(p) {
+          font-weight: bold;
+        }
 
-            .highlight {
-              background-color: red;
-            }
+        .highlight {
+          background-color: red;
+        }
 
-            ::slotted(.highlight) {
-              border-bottom: 1px dotted red;
-            }
+        ::slotted(.highlight) {
+          border-bottom: 1px dotted red;
+        }
 
-            .icon {
-              background: black;
-              color: white;
-              padding: 0.15rem 0.5rem;
-              text-align: center;
-              border-radius: 50%;
-            }
-        </style>
-        <slot>Some default</slot>
-        <span class="icon">?</span>
+        .icon {
+          background: black;
+          color: white;
+          padding: 0.15rem 0.5rem;
+          text-align: center;
+          border-radius: 50%;
+        }
+      </style>
+      <slot>Some default</slot>
+      <span class="icon">?</span>
     `;
   }
 
