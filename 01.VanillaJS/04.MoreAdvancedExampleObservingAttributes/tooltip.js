@@ -3,21 +3,21 @@ class Tooltip extends HTMLElement {
     super();
     this._tooltipIcon;
     this._tooltipVisible = false;
-    this._tooltipText = 'Some dummy tooltip text.';
+    this._tooltipText = 'Default text.';
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = `
       <style>
         div {
           font-weight: normal;
-          background-color: black;
-          color: white;
+          background-color: gray;
+          color: orange;
           position: absolute;
           top: 1.5rem;
           left: 0.75rem;
-          z-index: 10;
-          padding: 0.15rem;
+          z-index: 5;
+          padding: 0.12rem;
           border-radius: 3px;
-          box-shadow: 1px 1px 6px rgba(0,0,0,0.26);
+          box-shadow: 1px 1px 7px rgba(0,0,0,0.27);
         }
 
         :host {
@@ -25,7 +25,7 @@ class Tooltip extends HTMLElement {
         }
 
         :host(.important) {
-          background: var(--color-primary, #ccc);
+          background: var(--color-primary, #bbb);
           padding: 0.15rem;
         }
 
@@ -70,7 +70,7 @@ class Tooltip extends HTMLElement {
     this._render();
   }
 
-  // this function will be called with changes on attributes we are watching for changes
+  // this lifecycle function will be called with changes on attributes we are watching for changes
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue === newValue) {
       return;
@@ -80,15 +80,14 @@ class Tooltip extends HTMLElement {
     }
   }
 
-  // in this method we provide as array all the properties we want to watch for changes
+  // in this method we provide as array all the properties we want to watch for changes, because of performance reasons is not optimal to watch for everything
   static get observedAttributes() {
     return ['text'];
   }
 
   // this built-in function allows us to do some clean up work, because it is called before the component is destroyed
   disconnectedCallback() {
-    this._tooltipIcon.removeEventListener('mouseenter', this._showTooltip);
-    this._tooltipIcon.removeEventListener('mouseleave', this._hideTooltip);
+    console.log('Clean up work can be done here for example.');
   }
 
   _render() {
@@ -115,4 +114,4 @@ class Tooltip extends HTMLElement {
   }
 }
 
-customElements.define('uc-tooltip', Tooltip);
+customElements.define('uq-tooltip', Tooltip);

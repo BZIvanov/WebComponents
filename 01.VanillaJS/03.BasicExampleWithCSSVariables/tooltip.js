@@ -2,7 +2,7 @@ class Tooltip extends HTMLElement {
   constructor() {
     super();
     this._tooltipContainer;
-    this._tooltipText = 'Some dummy tooltip text.';
+    this._tooltipText = 'Default text.';
     this.attachShadow({ mode: 'open' });
     // :host selector is how we style the custom component from inside the component by selecting it
     // :host() by using host as function and providing parameters we can do conditional styling, depending for example if some class is provided
@@ -10,14 +10,14 @@ class Tooltip extends HTMLElement {
     this.shadowRoot.innerHTML = `
       <style>
         div {
-          background-color: black;
-          color: white;
+          background-color: gray;
+          color: orange;
           position: absolute;
-          z-index: 10;
+          z-index: 5;
         }
 
         :host(.imp) {
-          background: var(--color-primary, #ccc);
+          background: var(--color-primary, #bbb);
         }
 
         :host-context(p) {
@@ -35,7 +35,7 @@ class Tooltip extends HTMLElement {
         .icon {
           background: black;
           color: white;
-          padding: 0.15rem 0.5rem;
+          padding: 0.12rem 0.5rem;
           text-align: center;
           border-radius: 50%;
         }
@@ -67,4 +67,4 @@ class Tooltip extends HTMLElement {
   }
 }
 
-customElements.define('uc-tooltip', Tooltip);
+customElements.define('uq-tooltip', Tooltip);

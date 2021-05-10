@@ -8,36 +8,36 @@
     <style>
       /* we can use css variables in our custom components */
       html {
-        --color-primary: #a4fcda;
+        --color-primary: #a5fcda;
       }
 
       div {
-        border: 2px solid orange;
+        border: 1px solid orange;
       }
 
-      uc-tooltip {
+      uq-tooltip {
         border: 1px solid blue;
         padding: 0.15rem;
       }
 
       .highlight {
-        background-color: #f7d28e;
+        background-color: #f7b63e;
       }
     </style>
     <script src="tooltip.js"></script>
   </head>
   <body>
     <p>
-      <uc-tooltip class="imp" text="Web Components is a set of standards.">
+      <uq-tooltip class="imp" text="Text provided to our component.">
+        Below text is not going to part of the shadow dom so we give it class to
+        select it in the normal dom
         <span class="highlight">Web Components</span>
-      </uc-tooltip>
+      </uq-tooltip>
       are awesome!
     </p>
 
-    <uc-tooltip></uc-tooltip>
+    <uq-tooltip></uq-tooltip>
 
     <div>This does not get the web component styles!</div>
-
-    <a is="uc-confirm-link" href="https://www.google.com">Google</a>
   </body>
 </html>
