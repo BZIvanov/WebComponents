@@ -1,7 +1,7 @@
 class ConfirmLink extends HTMLAnchorElement {
   connectedCallback() {
     this.addEventListener('click', (event) => {
-      if (!confirm('Do you really want to leave?')) {
+      if (!confirm('Do you want to leave?')) {
         event.preventDefault();
       }
     });
@@ -9,4 +9,4 @@ class ConfirmLink extends HTMLAnchorElement {
 }
 
 // as third argument here we need to specify which element we extends, we dont have to do it for the generic html element
-customElements.define('uc-confirm-link', ConfirmLink, { extends: 'a' });
+customElements.define('uq-confirm-link', ConfirmLink, { extends: 'a' });

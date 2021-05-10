@@ -7,7 +7,7 @@
     <title>Web Components</title>
     <style>
       div {
-        border: 2px solid orange;
+        border: 1px solid chartreuse;
       }
     </style>
     <script src="tooltip.js"></script>
@@ -15,18 +15,21 @@
   </head>
   <body>
     <p>
-      <uc-tooltip text="Web Components is a set of standards."
-        >Web Components</uc-tooltip
-      >
-      are awesome!
+      <uq-tooltip text="Text provided to our component.">
+        Web Components
+      </uq-tooltip>
+      examples
     </p>
-    <uc-tooltip></uc-tooltip>
-    <div>This does not get the web component styles!</div>
+    <uq-tooltip></uq-tooltip>
+
+    <div>
+      This does not get the web component styles, because of the shadow DOM!
+    </div>
 
     <i
       >When extending specific element class we do it with
       <strong>is</strong> property, not with custom tag</i
     >
-    <a is="uc-confirm-link" href="https://www.google.com">Google</a>
+    <a is="uq-confirm-link" href="https://www.google.com">Google</a>
   </body>
 </html>

@@ -1,10 +1,12 @@
+// to create our custom element we need to extend the base htmlelement class
 class Tooltip extends HTMLElement {
   constructor() {
     super();
     this._tooltipContainer;
-    this._tooltipText = 'Some dummy tooltip text.';
+    this._tooltipText = 'Default text.';
   }
 
+  // connectCallback is one of the lifecycle hooks we can use for accessing the DOM
   // this callback is called, when our custom component is already attached to the DOM, so here is the right place to do something with it
   connectedCallback() {
     if (this.hasAttribute('text')) {
@@ -21,10 +23,10 @@ class Tooltip extends HTMLElement {
   _showTooltip() {
     this._tooltipContainer = document.createElement('div');
     this._tooltipContainer.textContent = this._tooltipText;
-    this._tooltipContainer.style.backgroundColor = 'black';
-    this._tooltipContainer.style.color = 'white';
+    this._tooltipContainer.style.backgroundColor = 'gray';
+    this._tooltipContainer.style.color = 'orange';
     this._tooltipContainer.style.position = 'absolute';
-    this._tooltipContainer.style.zIndex = '10';
+    this._tooltipContainer.style.zIndex = '5';
     this.appendChild(this._tooltipContainer);
   }
 
@@ -35,4 +37,4 @@ class Tooltip extends HTMLElement {
 
 // customElements is built-in javascript object with define method which allows us to create our custom tags
 // the name of the tag must contains a dash("-")
-customElements.define('uc-tooltip', Tooltip);
+customElements.define('uq-tooltip', Tooltip);
