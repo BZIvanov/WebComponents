@@ -5,28 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Web Components</title>
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 2rem;
-        font-family: sans-serif;
-      }
-    </style>
     <script src="modal.js"></script>
   </head>
   <body>
-    <uc-modal>
+    <div>
+      <code
+        >h1 element from the modal will go to the named slot, because we
+        specified as attribute, rest will go to the unnamed default slot</code
+      >
+    </div>
+
+    <uq-modal>
       <h1 slot="title">Please Confirm</h1>
-      <p>With your confirmation you agree to pay the full amount!</p>
-    </uc-modal>
-    <p>Please confirm your choice.</p>
-    <button>Show Details & Confirm</button>
+      <p>With confirmation you agree to pay the full amount!</p>
+    </uq-modal>
+
+    <button>Confirm</button>
+
     <script>
       const confirmButton = document.querySelector('button');
-      const modal = document.querySelector('uc-modal');
+      const modal = document.querySelector('uq-modal');
 
       modal.addEventListener('confirm', () => {
         console.log('Confirmed...');
@@ -38,6 +36,7 @@
 
       confirmButton.addEventListener('click', () => {
         //  modal.setAttribute('opened', '');
+        // we are calling the open method for our modal, where we set the attribute so the above line is alternative way and that is why it is left commented
         if (!modal.isOpen) {
           modal.open();
           console.log('Opening...');

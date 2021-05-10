@@ -12,7 +12,7 @@ class Modal extends HTMLElement {
           width: 100%;
           height: 100vh;
           background: rgba(0,0,0,0.75);
-          z-index: 10;
+          z-index: 5;
           opacity: 0;
           pointer-events: none;
         }
@@ -34,8 +34,7 @@ class Modal extends HTMLElement {
           width: 50%;
           z-index: 100;
           background: white;
-          border-radius: 3px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.26);
+          box-shadow: 0 2px 7px rgba(0,0,0,0.27);
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -46,7 +45,7 @@ class Modal extends HTMLElement {
 
         header {
           padding: 1rem;
-          border-bottom: 1px solid #ccc;
+          border-bottom: 1px solid #bbb;
         }
 
         ::slotted(h1) {
@@ -56,10 +55,11 @@ class Modal extends HTMLElement {
 
         #main {
           padding: 1rem;
+          background-color: #aaa;
         }
 
         #actions {
-          border-top: 1px solid #ccc;
+          border-top: 1px solid #bbb;
           padding: 1rem;
           display: flex;
           justify-content: flex-end;
@@ -69,7 +69,9 @@ class Modal extends HTMLElement {
           margin: 0 0.25rem;
         }
       </style>
+
       <div id="backdrop"></div>
+
       <div id="modal">
         <header>
           <slot name="title">Please Confirm Payment</slot>
@@ -79,10 +81,11 @@ class Modal extends HTMLElement {
         </section>
         <section id="actions">
           <button id="cancel-btn">Cancel</button>
-          <button id="confirm-btn">Okay</button>
+          <button id="confirm-btn">OK</button>
         </section>
       </div>
     `;
+
     const slots = this.shadowRoot.querySelectorAll('slot');
     slots[1].addEventListener('slotchange', (event) => {
       console.dir(slots[1].assignedNodes());
@@ -93,18 +96,11 @@ class Modal extends HTMLElement {
     backdrop.addEventListener('click', this._cancel.bind(this));
     cancelButton.addEventListener('click', this._cancel.bind(this));
     confirmButton.addEventListener('click', this._confirm.bind(this));
-    // cancelButton.addEventListener('cancel', () => {
-    //   console.log('Cancel inside the component');
-    // });
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     if (this.hasAttribute('opened')) {
       this.isOpen = true;
-      // this.shadowRoot.querySelector('#backdrop').style.opacity = 1;
-      // this.shadowRoot.querySelector('#backdrop').style.pointerEvents = 'all';
-      // this.shadowRoot.querySelector('#modal').style.opacity = 1;
-      // this.shadowRoot.querySelector('#modal').style.pointerEvents = 'all';
     } else {
       this.isOpen = false;
     }
@@ -139,4 +135,4 @@ class Modal extends HTMLElement {
   }
 }
 
-customElements.define('uc-modal', Modal);
+customElements.define('uq-modal', Modal);
